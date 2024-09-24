@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 20:29:43 On 29.08.2024
+
+Output: Export STEP
+Type  : ExportSTEP
+From  : PCB Document [ES_PCB_6C_2L_2023.PcbDoc]
+   Generated File[ES_PCB_6C_2L_2023.step]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 20:30:11 On 29.08.2024

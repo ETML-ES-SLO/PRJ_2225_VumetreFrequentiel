@@ -1,0 +1,26 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: 2225_VumetreFrequencemetre.PcbDoc   22.03.2023  14:19:47
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : 2225_VumetreFrequencemetre.TXT
+ASCII RectHoles File : 2225_VumetreFrequencemetre-RectHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.3mm (12mil)                                             Round             28        PTH        181.67mm (7.15inch)
+T2      0.711mm (28mil)                                           Round             46        PTH        674.66mm (26.56inch)
+T3      0.76mm (30mil)                                            Rectangle         2         PTH        17.69mm (0.70inch)
+T4      0.89mm (35mil)                                            Round             4         PTH        48.39mm (1.90inch)
+T5      0.9mm (35mil)                                             Round             22        PTH        194.41mm (7.65inch)
+T6      1.01mm (40mil)                                            Rectangle         1         PTH        2.55mm (0.10inch)
+T7      1.448mm (57mil)                                           Round             6         PTH        101.47mm (4.00inch)
+T8      1.6mm (63mil)                                             Round             7         PTH        192.83mm (7.59inch)
+T9      2mm (79mil)                                               Round             4         PTH        56.01mm (2.21inch)
+T10     2.8mm (110mil)                                            Round             4         PTH        320.94mm (12.64inch)
+T11     1.7mm (67mil)                                             Round             4         NPTH       59.73mm (2.35inch)
+T12     3.251mm (128mil)                                          Round             6         NPTH       81.66mm (3.22inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              134
+
+Total Processing Time (hh:mm:ss) : 00:00:00

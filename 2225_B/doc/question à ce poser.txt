@@ -1,0 +1,3 @@
+- tension d'allimentation USB-C --> ok 5V
+-recherche de LEDs RGB
+-ADC du micro ou externe

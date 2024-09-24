@@ -1,0 +1,526 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD21\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">22.03.2023</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">09:27:03</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc" class="file"><acronym title="K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc">K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">6</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">44</td></tr>
+</table>
+</td>
+</table><a name="IDEMVQRKRS1JTJE3W4ZL0N23EXVO2GWD10YHENVPJ4S4GGO1VGDCHE"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4CGNGUGTXLWGJJACHYGX4GFRSKJTXI2LK5E50ZJYHOD0EWH31F4L">Zero hole size multi-layer pad(s) detected</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXCM5KZLDCB3DHBCE0AIM0EUG3NQYLBYCFTUN2IFMWRHH1NR5CIUH">Multilayer Pads with 0 size Hole found</a></td>
+<td class="column2">3</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">6</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4ZHEXG0VDZT1JPEGJYFRAVZO4ETYFDF1WXQMRRCM0GB2EFU4NB0I">Clearance Constraint (Gap=0.151mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDMPR133NXWVTT0P3NCOFIA5APDM5RKH5AF4VGJSVB3LD3CKSCUL">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUUICHAORJJW3P0MVEMJYVOB4VK0OZW3NNJTYNYIV5JQE2XEWUEBD">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDS5ZNK1E12UJDNAK0WOLH0FOHHMEFRSGFX0NQJ3B1T3FZ5RNBF25L">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDILPKCLMYD22NNW532I2EA050KNZ5PWXMG5NNSVCYB0LFIUXMJBWC">Width Constraint (Min=0.15mm) (Max=1.5mm) (Preferred=0.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVVQFQFG1SCIWI3CLXLG1LLCDZPHNPFOO4MHBSOCZJQS2GIGGWY5E">Power Plane Connect Rule(Relief Connect )(Expansion=0.175mm) (Conductor Width=0.2mm) (Air Gap=0.2mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXCCCVCBUAMFOOFHLWPUIDX2OLMNTXGGFGSMBY3GCIVTDDZ4BP4XC">Minimum Annular Ring (Minimum=0.175mm) (((ObjectKind = 'Pad') OR (ObjectKind = 'Via')) And (Layer = 'MultiLayer') And (HoleDiameter &lt;= AsMM(0.45)))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWMO5TQNWUAB0I1ZDAIOMEOLX4CPUIJTDNYOOHBD5TIGLFA0NFCRG">Minimum Annular Ring (Minimum=0.175mm) (((ObjectKind = 'Pad') OR (ObjectKind = 'Via')) And (Layer = 'MultiLayer') And (HoleDiameter &gt; AsMM(0.45)))</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJGYTTC02LFZQBQ0SQMYNADYYUKAC1WWNQUTVRNOMJ3IDEKZAR5IG">Hole Size Constraint (Min=0.25mm) (Max=10mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID04YSVXDK5LIBJDSQ2LEIKOAMYGG40524LSNKJWDXZITCMI3KROCH">Pads and Vias to follow the Drill pairs settings</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDO3RPASD3KIYMGQWLJRODUPMWHJOBQP4UXMG5RIDKZQZJJZA4I2GE">Hole To Hole Clearance (Gap=0.35mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOPCTFGDGHJU2D2QOHL421WACPL0LJE1GQGS4H1F2B01C0M0IKNBP">Minimum Solder Mask Sliver (Gap=0.08mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID23M0ENNIGZNSJX4MBGYVZ3X1YMWZ5R4GRVYWVGK1RO2P0SX5SLEC">Silk To Solder Mask (Clearance=0.2mm) (IsPad),(All)</a></td>
+<td class="column2">22</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0QCSX5HQNFNEOIGENVYSDRSVKENCZKDYMXFN0IRWR2FFUXUC3KH">Silk to Silk (Clearance=0.2mm) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDK1ODRFOHLWXQFFUNNK2CFSC4205D2OYETY1RFIHBJTSGVUXXTDD">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCF3X12A0G5OAFDALXILJUESBZM3HSJ5UXQSCB2DO352Y3TS4FZF">Board Clearance Constraint (Gap=0mm) (All)</a></td>
+<td class="column2">14</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCA4VR0VUKWAUXUW1QEJMSZG3DF0OIGTFIO443DDHYE5MIEDFSLM">Component Clearance Constraint ( Horizontal Gap = 0.25mm, Vertical Gap = 0.25mm ) (All),(All) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4N2PXIZLRN15CDCWPOFJXXYCZKIXW1SDAKASHCLFGAENIDKMFYUI">Height Constraint (Min=0mm) (Max=25mm) (Prefered=12.5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">44</td>
+</tr>
+</table><br><a name="IDSLUEX3NOTJL0JV31IDJNR4BAFJ4ZI5XREPCG4BFLU4BV53Y2UIIH"><h2>Warnings</h2></a><a name="ID4CGNGUGTXLWGJJACHYGX4GFRSKJTXI2LK5E50ZJYHOD0EWH31F4L"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Zero hole size multi-layer pad(s) detected</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10377.244mil|Location2.X=10455.984mil|Location1.Y=13098.937mil|Location2.Y=13276.103mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10377.244mil|Location2.X=10455.984mil|Location1.Y=13098.937mil|Location2.Y=13276.103mil|Absolute=True">Pad J1-1(14.582mm,84.963mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9897.52mil|Location2.X=13742.52mil|Location1.Y=9907.52mil|Location2.Y=13717.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9897.52mil|Location2.X=13742.52mil|Location1.Y=9907.52mil|Location2.Y=13717.52mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10133.15mil|Location2.X=10211.89mil|Location1.Y=13108.78mil|Location2.Y=13266.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10133.15mil|Location2.X=10211.89mil|Location1.Y=13108.78mil|Location2.Y=13266.26mil|Absolute=True">Pad J1-2(8.382mm,84.963mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9991.181mil|Location2.X=11982.047mil|Location1.Y=12534.843mil|Location2.Y=13266.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9991.181mil|Location2.X=11982.047mil|Location1.Y=12534.843mil|Location2.Y=13266.26mil|Absolute=True">Net VCC5V</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10211.89mil|Location2.X=10369.37mil|Location1.Y=12951.3mil|Location2.Y=13030.04mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10211.89mil|Location2.X=10369.37mil|Location1.Y=12951.3mil|Location2.Y=13030.04mil|Absolute=True">Pad J1-3(11.382mm,79.963mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9897.52mil|Location2.X=13742.52mil|Location1.Y=9907.52mil|Location2.Y=13717.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9897.52mil|Location2.X=13742.52mil|Location1.Y=9907.52mil|Location2.Y=13717.52mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXCM5KZLDCB3DHBCE0AIM0EUG3NQYLBYCFTUN2IFMWRHH1NR5CIUH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Multilayer Pads with 0 size Hole found</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10377.244mil|Location2.X=10455.984mil|Location1.Y=13098.937mil|Location2.Y=13276.103mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10377.244mil|Location2.X=10455.984mil|Location1.Y=13098.937mil|Location2.Y=13276.103mil|Absolute=True">Pad J1-1(14.582mm,84.963mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10133.15mil|Location2.X=10211.89mil|Location1.Y=13108.78mil|Location2.Y=13266.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10133.15mil|Location2.X=10211.89mil|Location1.Y=13108.78mil|Location2.Y=13266.26mil|Absolute=True">Pad J1-2(8.382mm,84.963mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10211.89mil|Location2.X=10369.37mil|Location1.Y=12951.3mil|Location2.Y=13030.04mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10211.89mil|Location2.X=10369.37mil|Location1.Y=12951.3mil|Location2.Y=13030.04mil|Absolute=True">Pad J1-3(11.382mm,79.963mm) on Multi-Layer</acronym></a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDWMO5TQNWUAB0I1ZDAIOMEOLX4CPUIJTDNYOOHBD5TIGLFA0NFCRG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Annular Ring (Minimum=0.175mm) (((ObjectKind = 'Pad') OR (ObjectKind = 'Via')) And (Layer = 'MultiLayer') And (HoleDiameter &gt; AsMM(0.45)))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9938.148mil|Location2.X=9943.742mil|Location1.Y=9993.266mil|Location2.Y=9998.86mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9938.148mil|Location2.X=9943.742mil|Location1.Y=9993.266mil|Location2.Y=9998.86mil|Absolute=True">Minimum Annular Ring: (Collision &lt; 0.175mm) Via (2.5mm,2.5mm) from Top Layer to Bottom Layer (Annular Ring=0mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9938.148mil|Location2.X=9943.742mil|Location1.Y=13733.424mil|Location2.Y=13739.017mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9938.148mil|Location2.X=9943.742mil|Location1.Y=13733.424mil|Location2.Y=13739.017mil|Absolute=True">Minimum Annular Ring: (Collision &lt; 0.175mm) Via (2.5mm,97.5mm) from Top Layer to Bottom Layer (Annular Ring=0mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13678.306mil|Location2.X=13683.899mil|Location1.Y=9993.266mil|Location2.Y=9998.86mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13678.306mil|Location2.X=13683.899mil|Location1.Y=9993.266mil|Location2.Y=9998.86mil|Absolute=True">Minimum Annular Ring: (Collision &lt; 0.175mm) Via (97.5mm,2.5mm) from Top Layer to Bottom Layer (Annular Ring=0mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13678.306mil|Location2.X=13683.899mil|Location1.Y=13733.424mil|Location2.Y=13739.017mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13678.306mil|Location2.X=13683.899mil|Location1.Y=13733.424mil|Location2.Y=13739.017mil|Absolute=True">Minimum Annular Ring: (Collision &lt; 0.175mm) Via (97.5mm,97.5mm) from Top Layer to Bottom Layer (Annular Ring=0mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID23M0ENNIGZNSJX4MBGYVZ3X1YMWZ5R4GRVYWVGK1RO2P0SX5SLEC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.2mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11634.572mil|Location2.X=11643.696mil|Location1.Y=12680.004mil|Location2.Y=12689.128mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11634.572mil|Location2.X=11643.696mil|Location1.Y=12680.004mil|Location2.Y=12689.128mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.18mm &lt; 0.2mm) Between Pad J2-1(46.224mm,72.203mm) on Top Layer And Track (44.629mm,72.188mm)(45.444mm,72.188mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.18mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11634.572mil|Location2.X=11643.696mil|Location1.Y=12885.91mil|Location2.Y=12895.034mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11634.572mil|Location2.X=11643.696mil|Location1.Y=12885.91mil|Location2.Y=12895.034mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.18mm &lt; 0.2mm) Between Pad J2-2(46.224mm,77.403mm) on Top Layer And Track (44.629mm,77.418mm)(45.444mm,77.418mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.18mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11981.028mil|Location2.X=11990.152mil|Location1.Y=12680.004mil|Location2.Y=12689.128mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11981.028mil|Location2.X=11990.152mil|Location1.Y=12680.004mil|Location2.Y=12689.128mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.18mm &lt; 0.2mm) Between Pad J2-7(53.844mm,72.203mm) on Top Layer And Track (54.624mm,72.188mm)(55.439mm,72.188mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.18mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11981.028mil|Location2.X=11990.152mil|Location1.Y=12885.91mil|Location2.Y=12895.034mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11981.028mil|Location2.X=11990.152mil|Location1.Y=12885.91mil|Location2.Y=12895.034mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.18mm &lt; 0.2mm) Between Pad J2-8(53.844mm,77.403mm) on Top Layer And Track (54.624mm,77.418mm)(55.439mm,77.418mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.18mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=9913.655mil|Location2.Y=9922.779mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=9913.655mil|Location2.Y=9922.779mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.137mm &lt; 0.2mm) Between Pad J6-1(47.637mm,3.091mm) on Top Layer And Track (46.937mm,0.691mm)(46.937mm,1.791mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.137mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=10005.645mil|Location2.Y=10014.769mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=10005.645mil|Location2.Y=10014.769mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.137mm &lt; 0.2mm) Between Pad J6-1(47.637mm,3.091mm) on Top Layer And Track (46.937mm,4.391mm)(46.937mm,10.891mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.137mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=10387.533mil|Location2.Y=10396.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=10387.533mil|Location2.Y=10396.657mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.136mm &lt; 0.2mm) Between Pad J6-2(47.637mm,12.491mm) on Top Layer And Track (46.937mm,14.091mm)(46.937mm,15.191mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.136mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=10271.923mil|Location2.Y=10281.047mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11685.856mil|Location2.X=11694.98mil|Location1.Y=10271.923mil|Location2.Y=10281.047mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.136mm &lt; 0.2mm) Between Pad J6-2(47.637mm,12.491mm) on Top Layer And Track (46.937mm,4.391mm)(46.937mm,10.891mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.136mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11449.636mil|Location2.X=11458.76mil|Location1.Y=9992.396mil|Location2.Y=10001.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11449.636mil|Location2.X=11458.76mil|Location1.Y=9992.396mil|Location2.Y=10001.52mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.136mm &lt; 0.2mm) Between Pad J6-3(40.237mm,5.091mm) on Top Layer And Track (40.937mm,0.691mm)(40.937mm,3.791mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.136mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11449.636mil|Location2.X=11458.76mil|Location1.Y=10084.385mil|Location2.Y=10093.508mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11449.636mil|Location2.X=11458.76mil|Location1.Y=10084.385mil|Location2.Y=10093.508mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.137mm &lt; 0.2mm) Between Pad J6-3(40.237mm,5.091mm) on Top Layer And Track (40.937mm,6.391mm)(40.937mm,15.191mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.137mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=9912.263mil|Location2.Y=9921.387mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=9912.263mil|Location2.Y=9921.387mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.137mm &lt; 0.2mm) Between Pad J7-1(93.362mm,3.056mm) on Top Layer And Track (92.662mm,0.656mm)(92.662mm,1.756mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.137mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=10004.253mil|Location2.Y=10013.377mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=10004.253mil|Location2.Y=10013.377mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.137mm &lt; 0.2mm) Between Pad J7-1(93.362mm,3.056mm) on Top Layer And Track (92.662mm,4.356mm)(92.662mm,10.856mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.137mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=10386.141mil|Location2.Y=10395.265mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=10386.141mil|Location2.Y=10395.265mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.136mm &lt; 0.2mm) Between Pad J7-2(93.362mm,12.456mm) on Top Layer And Track (92.662mm,14.056mm)(92.662mm,15.156mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.136mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=10270.531mil|Location2.Y=10279.655mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13486.068mil|Location2.X=13495.192mil|Location1.Y=10270.531mil|Location2.Y=10279.655mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.136mm &lt; 0.2mm) Between Pad J7-2(93.362mm,12.456mm) on Top Layer And Track (92.662mm,4.356mm)(92.662mm,10.856mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.136mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13249.848mil|Location2.X=13258.972mil|Location1.Y=9991.004mil|Location2.Y=10000.128mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13249.848mil|Location2.X=13258.972mil|Location1.Y=9991.004mil|Location2.Y=10000.128mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.136mm &lt; 0.2mm) Between Pad J7-3(85.962mm,5.056mm) on Top Layer And Track (86.662mm,0.656mm)(86.662mm,3.756mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.136mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13249.848mil|Location2.X=13258.972mil|Location1.Y=10082.993mil|Location2.Y=10092.117mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13249.848mil|Location2.X=13258.972mil|Location1.Y=10082.993mil|Location2.Y=10092.117mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.137mm &lt; 0.2mm) Between Pad J7-3(85.962mm,5.056mm) on Top Layer And Track (86.662mm,6.356mm)(86.662mm,15.156mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.137mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10571.895mil|Location2.X=10578.144mil|Location1.Y=12074.868mil|Location2.Y=12081.117mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10571.895mil|Location2.X=10578.144mil|Location1.Y=12074.868mil|Location2.Y=12081.117mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.2mm) Between Pad P1-1(18.288mm,57.531mm) on Multi-Layer And Region (3 hole(s)) Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10561.179mil|Location2.X=10567.428mil|Location1.Y=12033.882mil|Location2.Y=12040.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10561.179mil|Location2.X=10567.428mil|Location1.Y=12033.882mil|Location2.Y=12040.132mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.2mm) Between Pad P1-2(18.288mm,54.991mm) on Multi-Layer And Region (3 hole(s)) Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12354.838mil|Location2.X=12363.962mil|Location1.Y=11865.556mil|Location2.Y=11874.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12354.838mil|Location2.X=12363.962mil|Location1.Y=11865.556mil|Location2.Y=11874.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.2mm) Between Pad Y-1(65.024mm,52.451mm) on Top Layer And Track (62.624mm,51.501mm)(63.77mm,51.501mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12441.078mil|Location2.X=12450.202mil|Location1.Y=11865.556mil|Location2.Y=11874.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12441.078mil|Location2.X=12450.202mil|Location1.Y=11865.556mil|Location2.Y=11874.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.2mm) Between Pad Y-1(65.024mm,52.451mm) on Top Layer And Track (66.278mm,51.501mm)(67.424mm,51.501mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12354.838mil|Location2.X=12363.962mil|Location1.Y=12314.376mil|Location2.Y=12323.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12354.838mil|Location2.X=12363.962mil|Location1.Y=12314.376mil|Location2.Y=12323.5mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.2mm) Between Pad Y-2(65.024mm,61.951mm) on Top Layer And Track (62.624mm,62.901mm)(63.77mm,62.901mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12441.078mil|Location2.X=12450.202mil|Location1.Y=12314.376mil|Location2.Y=12323.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12441.078mil|Location2.X=12450.202mil|Location1.Y=12314.376mil|Location2.Y=12323.5mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.2mm) Between Pad Y-2(65.024mm,61.951mm) on Top Layer And Track (66.278mm,62.901mm)(67.424mm,62.901mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID0QCSX5HQNFNEOIGENVYSDRSVKENCZKDYMXFN0IRWR2FFUXUC3KH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.2mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11587.491mil|Location2.X=11596.615mil|Location1.Y=12865.635mil|Location2.Y=12874.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11587.491mil|Location2.X=11596.615mil|Location1.Y=12865.635mil|Location2.Y=12874.759mil|Absolute=True">Silk To Silk Clearance Constraint: (0.182mm &lt; 0.2mm) Between Text "2" (43.594mm,76.903mm) on Top Overlay And Track (44.629mm,72.188mm)(44.629mm,77.418mm) on Top Overlay Silk Text to Silk Clearance [0.182mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12027.612mil|Location2.X=12036.736mil|Location1.Y=12889.186mil|Location2.Y=12898.43mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12027.612mil|Location2.X=12036.736mil|Location1.Y=12889.186mil|Location2.Y=12898.43mil|Absolute=True">Silk To Silk Clearance Constraint: (0.196mm &lt; 0.2mm) Between Text "8" (55.774mm,76.903mm) on Top Overlay And Track (54.624mm,77.418mm)(55.439mm,77.418mm) on Top Overlay Silk Text to Silk Clearance [0.196mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12027.659mil|Location2.X=12036.783mil|Location1.Y=12872.299mil|Location2.Y=12881.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12027.659mil|Location2.X=12036.783mil|Location1.Y=12872.299mil|Location2.Y=12881.423mil|Absolute=True">Silk To Silk Clearance Constraint: (0.159mm &lt; 0.2mm) Between Text "8" (55.774mm,76.903mm) on Top Overlay And Track (55.439mm,72.188mm)(55.439mm,77.418mm) on Top Overlay Silk Text to Silk Clearance [0.159mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10107.979mil|Location2.X=10117.103mil|Location1.Y=11596.831mil|Location2.Y=11605.954mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10107.979mil|Location2.X=10117.103mil|Location1.Y=11596.831mil|Location2.Y=11605.954mil|Absolute=True">Silk To Silk Clearance Constraint: (0.197mm &lt; 0.2mm) Between Text "C14" (6.605mm,42.926mm) on Top Overlay And Track (4.522mm,44.874mm)(6.98mm,44.874mm) on Top Overlay Silk Text to Silk Clearance [0.197mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDCF3X12A0G5OAFDALXILJUESBZM3HSJ5UXQSCB2DO352Y3TS4FZF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11698.449mil|Location2.X=11706.01mil|Location1.Y=9832.579mil|Location2.Y=9840.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11698.449mil|Location2.X=11706.01mil|Location1.Y=9832.579mil|Location2.Y=9840.14mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Arc (47.237mm,-0.109mm) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13498.66mil|Location2.X=13506.221mil|Location1.Y=9831.883mil|Location2.Y=9839.444mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13498.66mil|Location2.X=13506.221mil|Location1.Y=9831.883mil|Location2.Y=9839.444mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Arc (92.962mm,-0.144mm) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10772.239mil|Location2.X=10779.801mil|Location1.Y=9723.193mil|Location2.Y=9730.755mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10772.239mil|Location2.X=10779.801mil|Location1.Y=9723.193mil|Location2.Y=9730.755mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (23.711mm,-5.801mm)(23.711mm,0.651mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10988.739mil|Location2.X=10996.301mil|Location1.Y=9610.353mil|Location2.Y=9617.915mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10988.739mil|Location2.X=10996.301mil|Location1.Y=9610.353mil|Location2.Y=9617.915mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (23.711mm,-5.801mm)(34.709mm,-5.801mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11205.239mil|Location2.X=11212.801mil|Location1.Y=9723.193mil|Location2.Y=9730.755mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11205.239mil|Location2.X=11212.801mil|Location1.Y=9723.193mil|Location2.Y=9730.755mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (34.709mm,-5.801mm)(34.709mm,0.651mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11470.101mil|Location2.X=11477.663mil|Location1.Y=9801.775mil|Location2.Y=9809.337mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11470.101mil|Location2.X=11477.663mil|Location1.Y=9801.775mil|Location2.Y=9809.337mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (41.437mm,-1.809mm)(41.437mm,0.691mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11568.526mil|Location2.X=11576.088mil|Location1.Y=9767.517mil|Location2.Y=9775.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11568.526mil|Location2.X=11576.088mil|Location1.Y=9767.517mil|Location2.Y=9775.079mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (41.437mm,-1.809mm)(46.437mm,-1.809mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11666.951mil|Location2.X=11674.513mil|Location1.Y=9801.775mil|Location2.Y=9809.337mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11666.951mil|Location2.X=11674.513mil|Location1.Y=9801.775mil|Location2.Y=9809.337mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (46.437mm,-1.809mm)(46.437mm,0.691mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12587.239mil|Location2.X=12594.801mil|Location1.Y=9721.985mil|Location2.Y=9729.547mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12587.239mil|Location2.X=12594.801mil|Location1.Y=9721.985mil|Location2.Y=9729.547mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (69.812mm,-5.862mm)(69.812mm,0.589mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12803.739mil|Location2.X=12811.301mil|Location1.Y=9607.937mil|Location2.Y=9615.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12803.739mil|Location2.X=12811.301mil|Location1.Y=9607.937mil|Location2.Y=9615.499mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (69.812mm,-5.862mm)(80.81mm,-5.862mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13020.239mil|Location2.X=13027.801mil|Location1.Y=9721.985mil|Location2.Y=9729.547mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13020.239mil|Location2.X=13027.801mil|Location1.Y=9721.985mil|Location2.Y=9729.547mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (80.81mm,-5.862mm)(80.81mm,0.589mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13270.313mil|Location2.X=13277.875mil|Location1.Y=9801.079mil|Location2.Y=9808.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13270.313mil|Location2.X=13277.875mil|Location1.Y=9801.079mil|Location2.Y=9808.641mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (87.162mm,-1.844mm)(87.162mm,0.656mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13368.738mil|Location2.X=13376.3mil|Location1.Y=9766.125mil|Location2.Y=9773.687mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13368.738mil|Location2.X=13376.3mil|Location1.Y=9766.125mil|Location2.Y=9773.687mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (87.162mm,-1.844mm)(92.162mm,-1.844mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13467.163mil|Location2.X=13474.725mil|Location1.Y=9801.079mil|Location2.Y=9808.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\ES_Class6C_2L.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13467.163mil|Location2.X=13474.725mil|Location1.Y=9801.079mil|Location2.Y=9808.641mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.25mm) Between Board Edge And Track (92.162mm,-1.844mm)(92.162mm,0.656mm) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

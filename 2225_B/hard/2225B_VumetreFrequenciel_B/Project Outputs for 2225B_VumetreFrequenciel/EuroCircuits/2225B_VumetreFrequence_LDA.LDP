@@ -1,0 +1,4 @@
+Layer Pairs Export File for PCB: C:\Users\pd55xhr\OneDrive - Education Vaud\Diplome\2225_B\hard\2225B_VumetreFrequenciel\2225B_VumetreFrequence_LDA.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=2225b_vumetrefrequence_lda-roundholes.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=2225b_vumetrefrequence_lda-slotholes.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Rect_Holes|DrillFile=2225b_vumetrefrequence_lda-rectholes.txt|DrillLayers=gtl,gbl

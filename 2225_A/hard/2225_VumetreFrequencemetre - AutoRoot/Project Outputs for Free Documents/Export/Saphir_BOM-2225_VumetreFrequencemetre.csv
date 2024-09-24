@@ -1,0 +1,10 @@
+Line #,Name,Description,Designator,Revision ID,In stock,Revision State,Revision Status,Quantity,Manufacturer 1,Manufacturer Part Number 1,Manufacturer Lifecycle 1,Supplier 1,Supplier Part Number 1,Supplier Unit Price 1,Supplier Subtotal 1
+
+"","SN37A12A","","J3, J4","","","Not managed","","2","Switchcraft","SN37A12A","Volume Production","Digi-Key","SC2014-ND","3.61","7.23"
+"","SJ-3523-SMT","3.50mm _0.141, 1/8, Mini Plug_ - Headphone Phone Jack Stereo _3 Conductor, TRS_ Connector Solder","J6, J7","","","Not managed","","2","CUI Devices","SJ-3523-SMT-TR","Volume Production","Digi-Key","CP-3523SJCT-ND","0.93615","1.87"
+"","ECS-100-18-5PX-TR","10MHz ±30ppm Crystal 18pF 50 Ohms HC-49/US","Y","","","Not managed","","1","CTS","ATS100SM-1","Volume Production","Digi-Key","CTX508CT-ND","0.25026","0.25026"
+"","TL431IDBZR","Adjustable Precision Shunt Regulator, 34 ppm / degC, 100 mA, -40 to 85 degC, 3-pin SOT-23 (DBZ), Green (RoHS & no Sb/Br)","U3","CMP-0366-01140-2","","Released","Up to date","1","Texas Instruments","TL431IDBZR","Volume Production","Digi-Key","296-17332-1-ND","0.39856","0.39856"
+"","CONBNC002","BNC Connector Jack, Female Socket 50Ohm Panel Mount, Through Hole, Right Angle Solder","J5, J8","","","Not managed","","2","Linx","CONBNC002","Unknown","Digi-Key","343-CONBNC002-ND","2.86","5.73"
+"","MCP6002-E/SN","General Purpose Amplifier 2 Circuit Rail-to-Rail 8-SOIC","U4","","","Not managed","","1","Microchip","MCP6002-E/SN","Volume Production","Digi-Key","MCP6002-E/SN-ND","0.43564","0.43564"
+"","5011","Test Point, Black, Through Hole, RoHS, Bulk","GND1, GND2, GND3, GND4, GND5","CMP-1672-00003-4","","Released","Up to date","5","Keystone Electronics","5011","Volume Production","Digi-Key","36-5011-ND","0.38929","1.95"
+"","61030821821","WR-PHD Socket Header, SMT, Vertical, pitch 2.54mm, 2 Row, 8P","J2","","","Not managed","","1","Wurth Electronics","61030821821","Volume Production","Digi-Key","732-13381-1-ND","1.68","1.68"

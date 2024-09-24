@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [2225_VumetreFrequencemetre.PcbDoc]
+   Generated File[2225_VumetreFrequencemetre.TXT]
+   Generated File[2225_VumetreFrequencemetre-RectHoles.TXT]
+   Generated File[2225_VumetreFrequencemetre.LDP]
+   Generated File[2225_VumetreFrequencemetre.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 14:19:47 On 22.03.2023

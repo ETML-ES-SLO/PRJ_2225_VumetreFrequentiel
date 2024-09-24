@@ -1,0 +1,26 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: 2225B_VumetreFrequence_LDA.PcbDoc   02.09.2024  11:17:53
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : 2225B_VumetreFrequence_LDA-RoundHoles.TXT
+ASCII SlotHoles File : 2225B_VumetreFrequence_LDA-SlotHoles.TXT
+ASCII RectHoles File : 2225B_VumetreFrequence_LDA-RectHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.3mm (12mil)                                             Round             361       PTH        2688.81mm (105.86inch)
+T2      0.4mm (16mil)                                             Round             16        PTH        13.25mm (0.52inch)
+T3      0.6mm (24mil)                                             Slot              4         PTH        36.25mm (1.43inch)
+T4      0.89mm (35mil)                                            Round             4         PTH        99.54mm (3.92inch)
+T5      0.9mm (35mil)                                             Round             6         PTH        12.70mm (0.50inch)
+T6      1mm (39mil)                                               Round             3         PTH        5.08mm (0.20inch)
+T7      1mm (39mil)                                               Rectangle         6         PTH        131.87mm (5.19inch)
+T8      1.1mm (43mil)                                             Round             3         PTH        5.08mm (0.20inch)
+T9      1.6mm (63mil)                                             Round             8         PTH        435.22mm (17.13inch)
+T10     2mm (79mil)                                               Round             4         PTH        107.16mm (4.22inch)
+T11     3.2mm (126mil)                                            Round             4         PTH        420.46mm (16.55inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              419
+
+Total Processing Time (hh:mm:ss) : 00:00:01

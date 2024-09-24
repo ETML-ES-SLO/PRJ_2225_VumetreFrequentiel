@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 15:31:52 On 22.03.2023
+
+Output: Saphir_BOM
+Type  : BOM
+From  : Variant [[No Variations]] of Project [2225_VumetreFrequencemetre.PrjPcb]
+   Generated File[Saphir_BOM-2225_VumetreFrequencemetre.csv]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 15:31:53 On 22.03.2023

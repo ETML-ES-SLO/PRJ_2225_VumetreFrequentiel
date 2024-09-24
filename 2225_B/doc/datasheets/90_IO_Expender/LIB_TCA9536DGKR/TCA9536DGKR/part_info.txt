@@ -1,0 +1,9 @@
+Manufacturer=Texas Instruments
+PartNumber=TCA9536DGKR
+PartCategory=Integrated Circuit
+PackageCategory=Small Outline Packages
+PinCount=8
+Version=1.1
+Released=2022-01-06 06:26:31
+Downloaded=2024-08-23 13:23:30
+3D=Y

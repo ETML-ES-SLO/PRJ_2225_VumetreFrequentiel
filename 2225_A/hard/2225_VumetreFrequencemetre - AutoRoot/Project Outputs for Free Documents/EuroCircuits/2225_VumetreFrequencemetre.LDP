@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: K:\ES\PROJETS\SLO\2225_VuMetreFrequence\hard\2225_VumetreFrequencemetre - AutoRoot\2225_VumetreFrequencemetre.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=2225_vumetrefrequencemetre.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Rect_Holes|DrillFile=2225_vumetrefrequencemetre-rectholes.txt|DrillLayers=gtl,gbl
